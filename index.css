@@ -1,29 +1,384 @@
+```css
+/* ========================================
+   OBRA BLACK — ESTILO INDUSTRIAL
+   Cores: Preto, cinza concreto e laranja
+======================================== */
 
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --preto: #151515;
+    --preto-claro: #202020;
+    --cinza-escuro: #292929;
+    --cinza: #777777;
+    --cinza-claro: #e8e8e8;
+    --branco: #ffffff;
+    --laranja: #ff6b00;
+    --laranja-escuro: #d95700;
+    --fundo: #f2f2f0;
+    --borda: #d6d6d2;
+}
+
+/* PÁGINA */
 body {
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    color: #171717;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--fundo);
+    color: var(--preto);
+    line-height: 1.6;
 }
 
-.cabecalho,
-footer {
-    background: #000000;
-    color: #ffffff;
+/* LINKS E BOTÕES */
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
+button,
+input,
+select {
+    font: inherit;
+}
+
+/* CABEÇALHO */
+header {
+    background-color: var(--preto);
+    color: var(--branco);
+    padding: 22px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 4px solid var(--laranja);
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+header h1::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 25px;
+    background-color: var(--laranja);
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* BANNER PRINCIPAL */
 .banner {
-    background: #202020;
-    color: #ffffff;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(15, 15, 15, 0.96),
+            rgba(35, 35, 35, 0.84)
+        );
+    color: var(--branco);
+    padding: 75px 7%;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #444444;
 }
 
-.botao {
-    background: #ffffff;
-    color: #000000;
-    border-radius: 8px;
+.banner::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 8%;
+    width: 8px;
+    height: 100%;
+    background-color: var(--laranja);
+    transform: skewX(-18deg);
+    opacity: 0.9;
 }
 
+.banner h2 {
+    font-size: clamp(30px, 5vw, 52px);
+    line-height: 1.15;
+    max-width: 700px;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 18px;
+}
+
+.banner p {
+    max-width: 600px;
+    color: #d0d0d0;
+    font-size: 17px;
+}
+
+/* ÁREA PRINCIPAL */
+main {
+    width: 86%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 45px 0 65px;
+}
+
+/* TÍTULOS DAS SEÇÕES */
+main h2 {
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+main h2::after {
+    content: "";
+    display: block;
+    width: 65px;
+    height: 5px;
+    background-color: var(--laranja);
+    margin-top: 8px;
+}
+
+/* ÁREA DE PESQUISA E FILTROS */
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 28px 0;
+}
+
+#pesquisa,
+#categoria {
+    min-height: 48px;
+    padding: 12px 16px;
+    border: 1px solid var(--borda);
+    border-radius: 5px;
+    background-color: var(--branco);
+    color: var(--preto);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#pesquisa {
+    flex: 1;
+    min-width: 220px;
+}
+
+#categoria {
+    min-width: 200px;
+    cursor: pointer;
+}
+
+#pesquisa:focus,
+#categoria:focus {
+    border-color: var(--laranja);
+    box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.15);
+}
+
+/* QUANTIDADE DE PRODUTOS */
+#quantidade {
+    color: var(--cinza);
+    font-size: 14px;
+    font-weight: bold;
+    margin: 15px 0 22px;
+}
+
+/* GRADE DE PRODUTOS */
+#produtos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+}
+
+/* CARTÃO DE CADA PRODUTO */
 .produto {
-    background: #ffffff;
-    border-radius: 12px;
-    border: 1px solid #dddddd;
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 7px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    position: relative;
 }
+
+.produto:hover {
+    transform: translateY(-6px);
+    border-color: var(--laranja);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* DETALHES INTERNOS DO CARTÃO */
+.produto h3 {
+    color: var(--preto);
+    font-size: 19px;
+    line-height: 1.4;
+    margin: 18px 18px 8px;
+    font-weight: 800;
+}
+
+.produto p {
+    color: #666666;
+    font-size: 14px;
+    margin: 8px 18px;
+}
+
+/* CATEGORIA DO PRODUTO */
+.produto .categoria {
+    display: inline-block;
+    background-color: #fff0e5;
+    color: var(--laranja-escuro);
+    padding: 5px 10px;
+    margin: 16px 18px 0;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* PREÇO */
+.produto .preco {
+    color: var(--laranja-escuro);
+    font-size: 25px;
+    font-weight: 900;
+    margin-top: 15px;
+}
+
+/* ESTOQUE */
+.produto .estoque {
+    padding-bottom: 18px;
+}
+
+/* MENSAGENS DO SITE */
+#mensagem {
+    color: var(--cinza);
+    text-align: center;
+    padding: 30px 15px;
+    font-size: 15px;
+}
+
+/* RODAPÉ */
+footer {
+    background-color: var(--preto);
+    color: #c8c8c8;
+    text-align: center;
+    padding: 28px 7%;
+    border-top: 4px solid var(--laranja);
+    font-size: 14px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer strong {
+    color: var(--laranja);
+}
+
+/* SELEÇÃO DE TEXTO */
+::selection {
+    background-color: var(--laranja);
+    color: var(--branco);
+}
+
+/* BARRA DE ROLAGEM */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #dededb;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #777777;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--laranja);
+}
+
+/* TABLETS */
+@media (max-width: 1000px) {
+    #produtos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .banner {
+        padding: 60px 7%;
+    }
+}
+
+/* CELULARES */
+@media (max-width: 600px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    .banner {
+        padding: 50px 6%;
+    }
+
+    .banner h2 {
+        font-size: 32px;
+    }
+
+    .banner p {
+        font-size: 15px;
+    }
+
+    main {
+        width: 90%;
+        padding: 32px 0 45px;
+    }
+
+    main h2 {
+        font-size: 24px;
+    }
+
+    .filtros {
+        flex-direction: column;
+    }
+
+    #pesquisa,
+    #categoria {
+        width: 100%;
+        min-width: 0;
+    }
+
+    #produtos {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .produto h3 {
+        font-size: 18px;
+    }
+
+    .produto .preco {
+        font-size: 23px;
+    }
+
+    .banner::after {
+        right: 4%;
+        opacity: 0.45;
+    }
+}
+
+/* ACESSIBILIDADE: REDUZIR ANIMAÇÕES */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+    }
+}
+```
