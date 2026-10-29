@@ -1,31 +1,81 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
-    <title>Loja de Roupas</title>
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Obra Black | Materiais de Construção</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js" defer></script>
+</head>
 <body>
 
-    <h1>Loja de Roupas</h1>
+    <header class="cabecalho">
+        <a href="#" class="logo">OBRA<span>BLACK</span></a>
 
-    <h2>Cadastrar produto</h2>
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#catalogo">Produtos</a>
+        </nav>
+    </header>
 
-    <input id="nome" placeholder="Nome do produto">
+    <main>
+        <section class="banner" id="inicio">
+            <p class="etiqueta">TUDO PARA SUA OBRA</p>
 
-    <button onclick="salvar()">
-        Salvar
-    </button>
+            <h1>Construa com<br>
+                <span>qualidade.</span>
+            </h1>
 
-    <p id="mensagem"></p>
+            <p class="descricao-banner">
+                Os materiais certos para tirar seu projeto do papel.
+            </p>
 
-    <h2>Produtos cadastrados</h2>
+            <a href="#catalogo" class="botao">Ver produtos</a>
+        </section>
 
-    <ul id="lista"></ul>
+        <section class="catalogo" id="catalogo">
+            <div class="titulo-secao">
+                <div>
+                    <p class="etiqueta">NOSSO CATÁLOGO</p>
+                    <h2>Materiais de construção</h2>
+                </div>
 
-    <script src="script.js"></script>
+                <p id="quantidade">Carregando produtos...</p>
+            </div>
+
+            <div class="filtros">
+                <input
+                    type="search"
+                    id="pesquisa"
+                    placeholder="Buscar material..."
+                    aria-label="Buscar material"
+                >
+
+                <select id="categoria" aria-label="Filtrar por categoria">
+                    <option value="">Todas as categorias</option>
+                </select>
+            </div>
+
+            <div id="mensagem" class="mensagem">
+                Carregando catálogo...
+            </div>
+
+            <div id="produtos" class="produtos"></div>
+        </section>
+    </main>
+
+    <footer>
+        <a href="#inicio" class="logo">OBRA<span>BLACK</span></a>
+        <p>Qualidade e confiança para sua construção.</p>
+        <p class="copyright">
+            &copy; 2026 Obra Black. Todos os direitos reservados.
+        </p>
+    </footer>
 
 </body>
-
 </html>
